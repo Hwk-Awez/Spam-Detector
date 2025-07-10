@@ -4,8 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=111, initial-scale=1.0">
     <title>Spam Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1 id="heading">Email Spam Detector</h1>
+    <div class="head">
+        <h1 id="heading">Email Spam Detector</h1>
+    </div>
+
+    <div class="box">
+        <h3 id="title">Login</h3>
+        <form method="post">
+            <p>Registered mail id</p><br>
+            <input class="inp" type="email" placeholder="someone@gmail.com"><br>
+            <p>Password</p><br>
+            <input class="inp" type="password" placeholder="It's a secret"><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
 </body>
 </html>
