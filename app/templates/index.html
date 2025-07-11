@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=111, initial-scale=1.0">
     <title>Spam Detector</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
 </head>
 <body>
-    <div class="head">
-        <h1 id="heading">Email Spam Detector</h1>
+    <div id="prompt">
+        <p>Enter the message/mail below to evaluate</p>
     </div>
 
-    <div class="box">
-        <h3 id="title">Login</h3>
-        <form method="post">
-            <p>Registered mail id</p><br>
-            <input class="inp" type="email" placeholder="someone@gmail.com"><br>
-            <p>Password</p><br>
-            <input class="inp" type="password" placeholder="It's a secret"><br>
-            <button type="submit">Login</button>
+    <div class="main">
+        <form method="POST" id="data">
+            <textarea name='message' id="textbox" placeholder="Enter message"></textarea>
+            <button type="submit">Check</button>
         </form>
     </div>
 
+    {% if prediction %}
+
+        <div id="prediction">
+            <p>We expect it to be {{prediction}}.</p>
+        </div>
+    {% endif %}
 </body>
 </html>
