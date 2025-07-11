@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=111, initial-scale=1.0">
     <title>Spam Detector</title>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
 </head>
 <body>
     <div id="prompt">
@@ -13,8 +13,8 @@
 
     <div class="main">
         <form method="POST" id="data">
-            <textarea name='message' id="textbox" placeholder="Enter message"></textarea>
-            <button type="submit">Check</button>
+            <input type="text" required name='message' id="textbox" placeholder="Enter message">
+            <button type="submit" id="submitbtn">Check</button>
         </form>
     </div>
 

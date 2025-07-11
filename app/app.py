@@ -1,7 +1,14 @@
 from flask import Flask,request,render_template,redirect
 import pickle
+import mysql.connector as  mysql
+
+sql=mysql.connect(user='root',password='786786',host='localhost',database='spam_detector')
+
+cur=sql.cursor()
+
 
 app=Flask(__name__)
+app.secret_key='hawk'
 
 vect_f=open('vectorizer.pkl','rb')
 model_f=open('spam_model.pkl','rb')
@@ -24,3 +31,22 @@ def check():
         else:
             return render_template('index.html',prediction='Not Spam')
     return render_template('index.html')
+
+@app.route('/register',methods=['GET','POST'])
+def register():
+
+    if(request.method=='POST'):
+        username=request.form.get('username')
+        email=request.form.get('email')
+        password=request.form.get('password')
+
+        cur.execute("select username from users where email=%s",(email,))
+
+        check=cur.fetchone()
+
+        if check:
+            return redirect('/register')
+        else:
+            return redirect('/')
+
+    return render_template('register.html')

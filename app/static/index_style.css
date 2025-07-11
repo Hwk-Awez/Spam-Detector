@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+    background-color: rgba(133, 159, 245, 0.807);
+}
+
+#textbox{
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 500px;
+}
+
+#submitbtn{
+    border-radius: 10px;
+    height: 20 px;
+    width: 50px;
+}
