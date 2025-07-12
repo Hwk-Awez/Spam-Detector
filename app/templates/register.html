@@ -9,12 +9,12 @@
 
     <div class="registration">
         <h2>Register New User</h2><br>
-        
+
         <form method="POST" id="form">
             <p>May I know your name please? ;)</p><br>
-            <input type="text" name="username" id="username" placeholder="Enter Full Name" required><br>
+            <input type="text" name="username" id="username" placeholder="Enter Fullname" required><br>
 
-            <p>Email ID too, please?</p><br>
+            <p>Email ID too?</p><br>
             <input type="email" name="email" id="email" placeholder="Email" required><br>
 
             <p>Your phone got a password, right?</p><br>
@@ -23,6 +23,10 @@
             <button type="submit" id="submitbtn">Register</button>
         </form>
     </div>
+
+    {% if get_flashed_messages() %}
+    <p style="color: red;">There seems to be an account with the same Email ID. Try Login instead!</p>
+    {% endif %}
     
 </body>
 </html>

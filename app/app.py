@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template,redirect
+from flask import Flask,request,render_template,flash,redirect,get_flashed_messages
 import pickle
 import mysql.connector as  mysql
 
@@ -32,6 +32,10 @@ def check():
             return render_template('index.html',prediction='Not Spam')
     return render_template('index.html')
 
+@app.route('/login',methods=['GET','POST'])
+def login():
+    return render_template('login.html')
+
 @app.route('/register',methods=['GET','POST'])
 def register():
 
@@ -45,8 +49,11 @@ def register():
         check=cur.fetchone()
 
         if check:
+            flash("I think we saw you earlier. Try Logging In instead.")
             return redirect('/register')
         else:
-            return redirect('/')
+            cur.execute("insert into users(username,email,password) values(%s,%s,%s)",(username,email,password))
+            sql.commit()
+            return redirect('/login')
 
     return render_template('register.html')
