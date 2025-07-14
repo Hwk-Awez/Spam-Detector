@@ -1,9 +1,7 @@
-/* General body styling */
 body {
     min-height: 100vh;
     background: linear-gradient(135deg, #c9e7ff 0%, #f5f7fa 100%);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -12,57 +10,64 @@ body {
     overflow-x: hidden;
 }
 
-/* Acrylic (Glassmorphism) Box */
-.main, #prompt, #prediction {
+/* Acrylic Glassmorphism Registration Box */
+.registration {
     background: rgba(255, 255, 255, 0.35);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
     backdrop-filter: blur(10px);
-    border-radius: 20px;
+    border-radius: 22px;
     border: 1px solid rgba(255, 255, 255, 0.25);
-    margin: 20px 0;
-    padding: 32px 40px;
-    width: 350px;
+    width: 370px;
+    padding: 38px 44px 28px 44px;
+    margin: 30px auto;
     transition: box-shadow 0.3s;
-}
-
-.main:hover, #prompt:hover, #prediction:hover {
-    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
-}
-
-/* Prompt Text */
-#prompt p {
-    font-size: 1.2rem;
-    color: #1a237e;
-    letter-spacing: 0.5px;
-    margin: 0;
     text-align: center;
 }
 
-/* Form Styling */
-#data {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+.registration:hover {
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
 }
 
-#textbox {
-    padding: 14px 18px;
+/* Heading */
+.registration h2 {
+    font-size: 2rem;
+    color: #1976d2;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+/* Prompt Text */
+.registration p {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    letter-spacing: 0.1px;
+}
+
+/* Input Fields */
+.registration input[type="text"],
+.registration input[type="email"],
+.registration input[type="password"] {
+    width: 90%;
+    padding: 13px 16px;
     border-radius: 12px;
     border: none;
     background: rgba(255,255,255,0.6);
     font-size: 1rem;
+    margin-bottom: 16px;
     box-shadow: 0 2px 8px rgba(30, 136, 229, 0.08);
     outline: none;
     transition: background 0.2s;
 }
 
-#textbox:focus {
+.registration input:focus {
     background: rgba(255,255,255,0.85);
 }
 
-/* Button Styling */
+/* Register Button */
 #submitbtn {
-    padding: 12px 0;
+    width: 94%;
+    padding: 13px 0;
     border-radius: 12px;
     border: none;
     background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
@@ -72,6 +77,7 @@ body {
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(33, 203, 243, 0.18);
     transition: background 0.2s, transform 0.2s;
+    margin-top: 8px;
 }
 
 #submitbtn:hover {
@@ -79,23 +85,24 @@ body {
     transform: scale(1.04);
 }
 
-/* Prediction Box */
-#prediction p {
-    font-size: 1.1rem;
-    color: #2e7d32;
-    margin: 0;
+/* Error Message */
+p[style*="color: red"] {
+    background: rgba(255, 0, 0, 0.08);
+    padding: 8px;
+    border-radius: 8px;
+    margin: 10px auto;
+    font-weight: 500;
+    width: 370px;
     text-align: center;
 }
 
-@keyframes float {
-    0% { transform: translateY(0);}
-    100% { transform: translateY(-18px);}
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 500px) {
-    .main, #prompt, #prediction {
-        width: 90vw;
-        padding: 18px 8vw;
+    .registration {
+        width: 92vw;
+        padding: 18px 6vw 18px 6vw;
+    }
+    p[style*="color: red"] {
+        width: 92vw;
     }
 }

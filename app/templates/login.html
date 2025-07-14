@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css') }}">
 </head>
 <body>
 
-    <h1>Login page</h1>
+    <div class="login">
+        <h2 id="heading">Login</h2>
+        <form id="loginform" method="POST">
+            <h3>Welcome home, mate!</h3><br>
+            <p>Let's get you inside ;)</p><br>
+            <input type="email" class="inpval" placeholder="Enter registered mail ID" name="email"><br>
+            <p>You got your keys, right?</p><br>
+            <input type="password" class="inpval" placeholder="Enter Password" name="password"><br>
+            <button type="submit" id="loginbtn">Log In</button>
+        </form>
+
+        {% if get_flashed_messages() %}
+        <p style="color: red;">No User found, seems like we have a new member!</p>
+        {% endif %}
+
+        <p>Ouu, is this your first time here? No worries, <a href="{{url_for('register')}}">Register Here</a></p>
+    </div>
     
 </body>
 </html>

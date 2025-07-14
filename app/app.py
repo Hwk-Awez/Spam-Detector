@@ -16,7 +16,7 @@ model_f=open('spam_model.pkl','rb')
 vectorizer=pickle.load(vect_f)
 model=pickle.load(model_f)
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/index',methods=['GET','POST'])
 def check():
 
     if(request.method =='POST'):
@@ -32,8 +32,22 @@ def check():
             return render_template('index.html',prediction='Not Spam')
     return render_template('index.html')
 
-@app.route('/login',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def login():
+    if request.method=='POST':
+        email=request.form.get('email')
+        password=request.form.get('password')
+
+        cur.execute("select username from users where email=%s",(email,))
+
+        checkuser=cur.fetchone()
+
+        if not checkuser:
+            flash('No User Found')
+            return redirect('/')
+        
+        else:
+            return redirect('/index')
     return render_template('login.html')
 
 @app.route('/register',methods=['GET','POST'])
@@ -49,11 +63,11 @@ def register():
         check=cur.fetchone()
 
         if check:
-            flash("I think we saw you earlier. Try Logging In instead.")
+            flash('User already exists')
             return redirect('/register')
         else:
             cur.execute("insert into users(username,email,password) values(%s,%s,%s)",(username,email,password))
             sql.commit()
-            return redirect('/login')
+            return redirect('/')
 
     return render_template('register.html')
